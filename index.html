@@ -14292,8 +14292,18 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The goal of this project is to compare the effectiveness of tf-idf and Doc2vec on differentiating different roasts of coffee from a short description. My reason for pursuing this project is that I have always looked at the different coffees in grocery stores and coffee shops and noticed that the descriptions seem to give away what kind of roast the coffee is. For example, seeing words like rich or chocolate usually indicate a darker roast while words like fruit indicate a lighter roast. In this project, my goal is to find out whether that is a generalization, or whether you can reliably predict a coffee roast based on the description and flavor profiles of the coffee.</p>
 
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Gather-the-Data">Gather the Data<a class="anchor-link" href="#Gather-the-Data">&#182;</a></h2>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14305,12 +14315,6 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>I originally planned to use BeautifulSoup4 to scrape the website, however, I quickly noticed an issue. When loading the page on a browser (or in bs4) it only loaded 12 different coffees at a time, and in order to load the rest, you had to scroll down. The solution to this problem could have been something like selenium, which you can control like a browser (i.e. make it scroll down and load all the coffees). However, I have never used selenium from within a jupyter notebook and it also is a little heavy-handed for a data scraping task like this. I then checked out the network tab of Google Chrome and noticed that when you scrolled down, it was making an API call. This seemed like a request that I could make using the python requests library. Below is the code that I eventually got to work for scraping the data.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Here we are going to loop through and make multiple api requests to make our data. We are going to remove all ',' and lowercalse all the words as well as add the flavors to the short descriptions to have more words and descriptions of our different coffees.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14414,6 +14418,11 @@ tangerine passion fruit vibrant fruity -&gt; light-medium
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>We got 634 examples of coffees which is quite a lot! Also so far it seems like my idea that fruit corresponding to a lighter roast of coffee is holding up so far! The only way to really be sure about that though is to do some exploratory data analysis. Unfortunately, I don't think that there is much feature engineering to do for either of the models that I am using, especially since the data already looks nice for those two models. However, we can still make some interesting conclusions about the data from looking at trends!</p>
 
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Exploratory-Data-Analysis">Exploratory Data Analysis<a class="anchor-link" href="#Exploratory-Data-Analysis">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -14911,8 +14920,18 @@ tangerine passion fruit vibrant fruity -&gt; light-medium
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Now that we have done some fun EDA, lets get into the really fun stuff, tfidf vs Doc2Vec. After looking at the graphs above, I am pretty concerned about their performance. I really thought that there was going to be specific words that more obviously corresponded to different roasts of coffee, but that did not exactly seem to be the case.</p>
+<h2 id="tf-idf-vs-Doc2vec">tf-idf vs Doc2vec<a class="anchor-link" href="#tf-idf-vs-Doc2vec">&#182;</a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now that we have done some fun EDA, lets get into the really fun stuff, tfidf vs Doc2vec. After looking at the graphs above, I am pretty concerned about their performance. I really thought that there was going to be specific words that more obviously corresponded to different roasts of coffee, but that did not exactly seem to be the case.</p>
 
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="tf-idf">tf-idf<a class="anchor-link" href="#tf-idf">&#182;</a></h2>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14993,6 +15012,11 @@ tangerine passion fruit vibrant fruity -&gt; light-medium
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>This is really not too bad a result for tf-idf. I was expecting a lot higher initially, but after seeing the graphs for different words, I was not expecting that high of an accuracy.</p>
 
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Doc2vec">Doc2vec<a class="anchor-link" href="#Doc2vec">&#182;</a></h2>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
